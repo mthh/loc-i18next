@@ -13,7 +13,7 @@ $(".nav").localize();
 loc-i18next :
 
 ```js
-localize = locI18next(i18nextInstance);
+localize = locI18next.init(i18nextInstance);
 localize(".nav");
 ```
 ## Initialize the plugin
