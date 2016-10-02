@@ -115,4 +115,4 @@ localize("#btn1");
 
 ## Motivation:
 - Obtaining the same kind of functionnalities than with `jquery-i18next` in a project not using jquery.
-- Having a small occasion the try some packages like rollup, babel or uglify.
+- Having a small occasion to try some packages like rollup, babel or uglify.
