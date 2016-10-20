@@ -8,11 +8,10 @@ const defaults = {
 
 function init(i18next, options={}){
     options = { ...defaults, ...options };
-
+    var extendDefault = (o, val) => options.parseDefaultValueFromContent
+                                    ? { ...o, ...{ defaultValue: val } } : o;
     function parse(elem, key, opts){
         var attr = 'text';
-        var extendDefault = (o, val) => options.parseDefaultValueFromContent
-                                        ? { ...o, ...{ defaultValue: val } } : o;
 
         if(key.indexOf('[') == 0){
             var parts = key.split(']');
@@ -20,9 +19,9 @@ function init(i18next, options={}){
             attr = parts[0].substr(1, parts[0].length - 1);
         }
 
-        if(key.indexOf(';') == key.length -1){
-            key = key.substr(0, key.length - 2);
-        }
+		key = key.indexOf(';') == key.length - 1 
+				? key.substr(0, key.length - 2)
+				: key;
 
         if (attr === 'html') {
             elem.innerHTML = i18next.t(key, extendDefault(opts, elem.innerHTML));
@@ -71,8 +70,8 @@ function init(i18next, options={}){
         }
 
         if(options.useOptionsAttr === true) {
-            var clone = {};
-            clone = _extends({ clone: clone }, opts);
+            let clone = {};
+            clone = { clone, ...opts };
             delete clone.lng;
             elem.setAttribute(options.optionsAttr, clone);
         }
@@ -93,5 +92,5 @@ function init(i18next, options={}){
 }
 
 export default {
-    init: init,
+    init: init
 };

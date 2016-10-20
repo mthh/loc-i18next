@@ -1,5 +1,8 @@
-var locI18next = (function () {
-'use strict';
+(function (global, factory) {
+  typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
+  typeof define === 'function' && define.amd ? define(factory) :
+  (global.locI18next = factory());
+}(this, (function () { 'use strict';
 
 var asyncGenerator = function () {
   function AwaitValue(value) {
@@ -128,7 +131,7 @@ var asyncGenerator = function () {
 
 
 
-var _extends$1 = Object.assign || function (target) {
+var _extends = Object.assign || function (target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i];
 
@@ -216,13 +219,12 @@ var defaults$$1 = {
 function init(i18next) {
     var options = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
 
-    options = _extends$1({}, defaults$$1, options);
-
+    options = _extends({}, defaults$$1, options);
+    var extendDefault = function extendDefault(o, val) {
+        return options.parseDefaultValueFromContent ? _extends({}, o, { defaultValue: val }) : o;
+    };
     function parse(elem, key, opts) {
         var attr = 'text';
-        var extendDefault = function extendDefault(o, val) {
-            return options.parseDefaultValueFromContent ? _extends$1({}, o, { defaultValue: val }) : o;
-        };
 
         if (key.indexOf('[') == 0) {
             var parts = key.split(']');
@@ -230,9 +232,7 @@ function init(i18next) {
             attr = parts[0].substr(1, parts[0].length - 1);
         }
 
-        if (key.indexOf(';') == key.length - 1) {
-            key = key.substr(0, key.length - 2);
-        }
+        key = key.indexOf(';') == key.length - 1 ? key.substr(0, key.length - 2) : key;
 
         if (attr === 'html') {
             elem.innerHTML = i18next.t(key, extendDefault(opts, elem.innerHTML));
@@ -306,4 +306,4 @@ var main = {
 
 return main;
 
-}());
+})));
