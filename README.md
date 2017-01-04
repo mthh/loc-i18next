@@ -42,7 +42,7 @@ localize("#btn1", options);
 or
 
 ```js
-<a id="btn1" href="#" data-i18n="myKey" data-i18n-options="{ 'a': 'b' }"></a>
+<a id="btn1" href="#" data-i18n="myKey" i18n-options="{ 'a': 'b' }"></a>
 localize("#btn1");
 ```
 

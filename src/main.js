@@ -19,7 +19,7 @@ function init(i18next, options={}){
             attr = parts[0].substr(1, parts[0].length - 1);
         }
 
-		key = key.indexOf(';') == key.length - 1 
+		key = key.indexOf(';') == key.length - 1
 				? key.substr(0, key.length - 2)
 				: key;
 
@@ -43,6 +43,18 @@ function init(i18next, options={}){
         }
     };
 
+    function relaxedJsonParse(badJSON) {
+      return JSON.parse(badJSON
+        .replace(/:\s*"([^"]*)"/g, function (match, p1) {
+          return ': "' + p1.replace(/:/g, '@colon@') + '"';
+        })
+        .replace(/:\s*'([^']*)'/g, function (match, p1) {
+          return ': "' + p1.replace(/:/g, '@colon@') + '"';
+        })
+        .replace(/(['"])?([a-z0-9A-Z_]+)(['"])?\s*:/g, '"$2": ')
+        .replace(/@colon@/g, ':'));
+    }
+
     function _loc(elem, opts){
         var key = elem.getAttribute(options.selectorAttr);
 //        if (!key && typeof key !== 'undefined' && key !== false)
@@ -56,7 +68,7 @@ function init(i18next, options={}){
             target = elem.querySelector(targetSelector) || elem;
 
         if(!opts && options.useOptionsAttr === true)
-            opts = elem.getAttribute(options.optionsAttr);
+            opts = relaxedJsonParse(elem.getAttribute(options.optionsAttr) || '{}');
 
         opts = opts || {};
 
@@ -73,7 +85,7 @@ function init(i18next, options={}){
             let clone = {};
             clone = { clone, ...opts };
             delete clone.lng;
-            elem.setAttribute(options.optionsAttr, clone);
+            elem.setAttribute(options.optionsAttr, JSON.stringify(clone));
         }
     }
 
