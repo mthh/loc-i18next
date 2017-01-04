@@ -1,6 +1,6 @@
 {
   "name": "loc-i18next",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Smart selector for use with i18next",
   "main": "dist/commonjs/index.js",
   "directories": {
@@ -12,7 +12,7 @@
     "babel-core": "6.13.2",
     "babel-eslint": "^6.1.2",
     "babel-preset-es2015": "^6.13.2",
-    "babel-preset-es2015-rollup": "^1.2.0",
+    "babel-preset-es2015-rollup": "^3.0.0",
     "babel-preset-stage-0": "^6.5.0",
     "eslint": "^3.3.1",
     "eslint-config-airbnb": "10.0.1",
@@ -42,6 +42,7 @@
     "url": "git+https://github.com/mthh/loc-i18next.git"
   },
   "author": "mthh",
+  "contributors": [{"name": "NOtherDev"}],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mthh/loc-i18next/issues"
