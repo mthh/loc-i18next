@@ -1,8 +1,8 @@
 {
   "name": "loc-i18next",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Smart selector for use with i18next",
-  "main": "dist/commonjs/index.js",
+  "main": "index.js",
   "directories": {
     "example": "example"
   },
@@ -35,7 +35,8 @@
     "build:umd": "rollup -c rollup.config.js --format umd && rollup -c rollup.config.js --format umd --uglify",
     "build:amd": "rollup -c rollup.config.js --format amd && rollup -c rollup.config.js --format umd --uglify",
     "build:iife": "rollup -c rollup.config.js --format iife && rollup -c rollup.config.js --format iife --uglify",
-    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:umd && npm run copy"
+    "build": "npm run clean && npm run build:cjs && npm run build:es && npm run build:umd && npm run copy",
+    "preversion": "npm run build && git push"
   },
   "repository": {
     "type": "git",
