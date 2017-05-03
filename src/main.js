@@ -28,19 +28,19 @@ function init(i18next, options={}){
         } else if(attr === 'text') {
             elem.textContent = i18next.t(key, extendDefault(opts, elem.textContent));
         } else if(attr === 'prepend') {
-            let startIdx = elem.innerHTML.indexOf('<tr-n>');
-            let endIdx = elem.innerHTML.indexOf('</tr-n>') + 7;
+            let startIdx = elem.innerHTML.indexOf('<loc-i18n>');
+            let endIdx = elem.innerHTML.indexOf('</loc-i18n>') + 11;
             if (startIdx > -1 && endIdx > 6) {
                 elem.innerHTML = [elem.innerHTML.substring(0, startIdx), elem.innerHTML.slice(endIdx)].join('')
             }
-            elem.innerHTML = ['<tr-n>', i18next.t(key, extendDefault(opts, elem.innerHTML)), '</tr-n>', elem.innerHTML].join('');
+            elem.innerHTML = ['<loc-i18n>', i18next.t(key, extendDefault(opts, elem.innerHTML)), '</loc-i18n>', elem.innerHTML].join('');
         } else if(attr === 'append') {
-            let startIdx = elem.innerHTML.indexOf('<tr-n>');
-            let endIdx = elem.innerHTML.indexOf('</tr-n>') + 7;
+            let startIdx = elem.innerHTML.indexOf('<loc-i18n>');
+            let endIdx = elem.innerHTML.indexOf('</loc-i18n>') + 7;
             if (startIdx > -1 && endIdx > 6) {
                 elem.innerHTML = [elem.innerHTML.substring(0, startIdx), elem.innerHTML.slice(endIdx)].join('')
             }
-            elem.innerHTML = [elem.innerHTML, '<tr-n>', i18next.t(key, extendDefault(opts, elem.innerHTML), '</tr-n>')].join('');
+            elem.innerHTML = [elem.innerHTML, '<loc-i18n>', i18next.t(key, extendDefault(opts, elem.innerHTML), '</loc-i18n>')].join('');
         } else if(attr.indexOf('data-') === 0) {
             let dataAttr = attr.substr('data-'.length);
             let translated = i18next.t(key, extendDefault(opts, elem.getAttribute(dataAttr)));
