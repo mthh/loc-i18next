@@ -19,18 +19,28 @@ function init(i18next, options={}){
             attr = parts[0].substr(1, parts[0].length - 1);
         }
 
-		key = key.indexOf(';') == key.length - 1
-				? key.substr(0, key.length - 2)
-				: key;
+        key = key.indexOf(';') == key.length - 1
+            ? key.substr(0, key.length - 2)
+        	  : key;
 
         if (attr === 'html') {
             elem.innerHTML = i18next.t(key, extendDefault(opts, elem.innerHTML));
         } else if(attr === 'text') {
             elem.textContent = i18next.t(key, extendDefault(opts, elem.textContent));
         } else if(attr === 'prepend') {
-            elem.innerHTML = [i18next.t(key, extendDefault(opts, elem.innerHTML)), elem.innerHTML].join('');
+            let startIdx = elem.innerHTML.indexOf('<tr-n>');
+            let endIdx = elem.innerHTML.indexOf('</tr-n>') + 7;
+            if (startIdx > -1 && endIdx > 6) {
+                elem.innerHTML = [elem.innerHTML.substring(0, startIdx), elem.innerHTML.slice(endIdx)].join('')
+            }
+            elem.innerHTML = ['<tr-n>', i18next.t(key, extendDefault(opts, elem.innerHTML)), '</tr-n>', elem.innerHTML].join('');
         } else if(attr === 'append') {
-            elem.innerHTML = [elem.innerHTML, i18next.t(key, extendDefault(opts, elem.innerHTML))].join('');
+            let startIdx = elem.innerHTML.indexOf('<tr-n>');
+            let endIdx = elem.innerHTML.indexOf('</tr-n>') + 7;
+            if (startIdx > -1 && endIdx > 6) {
+                elem.innerHTML = [elem.innerHTML.substring(0, startIdx), elem.innerHTML.slice(endIdx)].join('')
+            }
+            elem.innerHTML = [elem.innerHTML, '<tr-n>', i18next.t(key, extendDefault(opts, elem.innerHTML), '</tr-n>')].join('');
         } else if(attr.indexOf('data-') === 0) {
             let dataAttr = attr.substr('data-'.length);
             let translated = i18next.t(key, extendDefault(opts, elem.getAttribute(dataAttr)));

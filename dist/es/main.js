@@ -31,9 +31,19 @@ function init(i18next) {
         } else if (attr === 'text') {
             elem.textContent = i18next.t(key, extendDefault(opts, elem.textContent));
         } else if (attr === 'prepend') {
-            elem.innerHTML = [i18next.t(key, extendDefault(opts, elem.innerHTML)), elem.innerHTML].join('');
+            var startIdx = elem.innerHTML.indexOf('<tr-n>');
+            var endIdx = elem.innerHTML.indexOf('</tr-n>') + 7;
+            if (startIdx > -1 && endIdx > 6) {
+                elem.innerHTML = [elem.innerHTML.substring(0, startIdx), elem.innerHTML.slice(endIdx)].join('');
+            }
+            elem.innerHTML = ['<tr-n>', i18next.t(key, extendDefault(opts, elem.innerHTML)), '</tr-n>', elem.innerHTML].join('');
         } else if (attr === 'append') {
-            elem.innerHTML = [elem.innerHTML, i18next.t(key, extendDefault(opts, elem.innerHTML))].join('');
+            var _startIdx = elem.innerHTML.indexOf('<tr-n>');
+            var _endIdx = elem.innerHTML.indexOf('</tr-n>') + 7;
+            if (_startIdx > -1 && _endIdx > 6) {
+                elem.innerHTML = [elem.innerHTML.substring(0, _startIdx), elem.innerHTML.slice(_endIdx)].join('');
+            }
+            elem.innerHTML = [elem.innerHTML, '<tr-n>', i18next.t(key, extendDefault(opts, elem.innerHTML), '</tr-n>')].join('');
         } else if (attr.indexOf('data-') === 0) {
             var dataAttr = attr.substr('data-'.length);
             var translated = i18next.t(key, extendDefault(opts, elem.getAttribute(dataAttr)));
