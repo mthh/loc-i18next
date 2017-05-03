@@ -36,7 +36,7 @@ function init(i18next, options={}){
             elem.innerHTML = ['<loc-i18n>', i18next.t(key, extendDefault(opts, elem.innerHTML)), '</loc-i18n>', elem.innerHTML].join('');
         } else if(attr === 'append') {
             let startIdx = elem.innerHTML.indexOf('<loc-i18n>');
-            let endIdx = elem.innerHTML.indexOf('</loc-i18n>') + 7;
+            let endIdx = elem.innerHTML.indexOf('</loc-i18n>') + 11;
             if (startIdx > -1 && endIdx > 6) {
                 elem.innerHTML = [elem.innerHTML.substring(0, startIdx), elem.innerHTML.slice(endIdx)].join('')
             }
