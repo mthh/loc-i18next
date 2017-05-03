@@ -37,19 +37,19 @@ function init(i18next) {
         } else if (attr === 'text') {
             elem.textContent = i18next.t(key, extendDefault(opts, elem.textContent));
         } else if (attr === 'prepend') {
-            var startIdx = elem.innerHTML.indexOf('<tr-n>');
-            var endIdx = elem.innerHTML.indexOf('</tr-n>') + 7;
+            var startIdx = elem.innerHTML.indexOf('<loc-i18n>');
+            var endIdx = elem.innerHTML.indexOf('</loc-i18n>') + 11;
             if (startIdx > -1 && endIdx > 6) {
                 elem.innerHTML = [elem.innerHTML.substring(0, startIdx), elem.innerHTML.slice(endIdx)].join('');
             }
-            elem.innerHTML = ['<tr-n>', i18next.t(key, extendDefault(opts, elem.innerHTML)), '</tr-n>', elem.innerHTML].join('');
+            elem.innerHTML = ['<loc-i18n>', i18next.t(key, extendDefault(opts, elem.innerHTML)), '</loc-i18n>', elem.innerHTML].join('');
         } else if (attr === 'append') {
-            var _startIdx = elem.innerHTML.indexOf('<tr-n>');
-            var _endIdx = elem.innerHTML.indexOf('</tr-n>') + 7;
+            var _startIdx = elem.innerHTML.indexOf('<loc-i18n>');
+            var _endIdx = elem.innerHTML.indexOf('</loc-i18n>') + 11;
             if (_startIdx > -1 && _endIdx > 6) {
                 elem.innerHTML = [elem.innerHTML.substring(0, _startIdx), elem.innerHTML.slice(_endIdx)].join('');
             }
-            elem.innerHTML = [elem.innerHTML, '<tr-n>', i18next.t(key, extendDefault(opts, elem.innerHTML), '</tr-n>')].join('');
+            elem.innerHTML = [elem.innerHTML, '<loc-i18n>', i18next.t(key, extendDefault(opts, elem.innerHTML), '</loc-i18n>')].join('');
         } else if (attr.indexOf('data-') === 0) {
             var dataAttr = attr.substr('data-'.length);
             var translated = i18next.t(key, extendDefault(opts, elem.getAttribute(dataAttr)));
