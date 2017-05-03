@@ -1,6 +1,6 @@
 {
   "name": "loc-i18next",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "Smart selector for use with i18next",
   "main": "index.js",
   "directories": {
@@ -43,7 +43,11 @@
     "url": "git+https://github.com/mthh/loc-i18next.git"
   },
   "author": "mthh",
-  "contributors": [{"name": "NOtherDev"}],
+  "contributors": [
+    {
+      "name": "NOtherDev"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/mthh/loc-i18next/issues"
