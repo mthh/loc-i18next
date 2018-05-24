@@ -1,8 +1,9 @@
-# Introduction
+# loc-i18next
+## Introduction
 
 A replicate of [jquery-i18next](https://github.com/i18next/jquery-i18next) module (which is great by the way!), intended for use without jquery.
 
-# Comparaison
+## Comparaison with `jquery-i18next`
 jquery-i18next plugin :
 
 ```js
@@ -28,11 +29,11 @@ localize = locI18next.init(i18nextInstance, {
   parseDefaultValueFromContent: true
 });
 ```
-*Using default values :* 
+*Using default values :*
 ```js
 localize = locI18next.init(i18nextInstance);
 ```
-## using options in translation function
+## Using options in translation function
 
 ```js
 <a id="btn1" href="#" data-i18n="myKey"></a>
@@ -46,7 +47,7 @@ or
 localize("#btn1");
 ```
 
-## usage of selector function
+## Usage of selector function
 
 ### translate an element
 
@@ -113,6 +114,15 @@ localize("#btn1");
 localize("#btn1");
 ```
 
-## Motivation:
+## Motivation
+- Having an occasion to try some packages like rollup, babel or uglify.
 - Obtaining the same kind of functionnalities than with `jquery-i18next` in a project not using jquery.
-- Having a small occasion to try some packages like rollup, babel or uglify.
+
+
+## Project actively using `loc-i18next`
+- [Magrit](https://github.com/riatelab/magrit) : [http://magrit.cnrs.fr/](http://magrit.cnrs.fr/)
+
+
+## Blog posts about using `loc-i18next`
+- [https://code.tutsplus.com/tutorials/translating-stimulus-apps-with-i18next--cms-30770](https://code.tutsplus.com/tutorials/translating-stimulus-apps-with-i18next--cms-30770)
+- [https://phraseapp.com/blog/posts/localizing-stimulusjs-i18next/](https://phraseapp.com/blog/posts/localizing-stimulusjs-i18next/)
