@@ -52,5 +52,6 @@
   "bugs": {
     "url": "https://github.com/mthh/loc-i18next/issues"
   },
-  "homepage": "https://github.com/mthh/loc-i18next"
+  "homepage": "https://github.com/mthh/loc-i18next",
+  "keywords": ["i18next", "i18next-plugin", "internationalization", "i18n", "translation", "localization", "l10n"]
 }
