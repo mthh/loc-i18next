@@ -11,7 +11,8 @@ var defaults = {
     targetAttr: 'i18n-target',
     optionsAttr: 'i18n-options',
     useOptionsAttr: false,
-    parseDefaultValueFromContent: true
+    parseDefaultValueFromContent: true,
+    document: document
 };
 
 function init(i18next) {
@@ -103,7 +104,7 @@ function init(i18next) {
     }
 
     function handle(selector, opts) {
-        var elems = document.querySelectorAll(selector);
+        var elems = options.document.querySelectorAll(selector);
         for (var i = 0; i < elems.length; i++) {
             var elem = elems[i];
             var childs = elem.querySelectorAll('[' + options.selectorAttr + ']');

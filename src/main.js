@@ -3,7 +3,8 @@ const defaults = {
     targetAttr: 'i18n-target',
     optionsAttr: 'i18n-options',
     useOptionsAttr: false,
-    parseDefaultValueFromContent: true
+    parseDefaultValueFromContent: true,
+    document: document,
 };
 
 function init(i18next, options={}){
@@ -100,7 +101,7 @@ function init(i18next, options={}){
     }
 
     function handle(selector, opts){
-        var elems = document.querySelectorAll(selector);
+        var elems = options.document.querySelectorAll(selector);
         for(let i = 0; i < elems.length; i++){
             let elem = elems[i];
             let childs = elem.querySelectorAll('[' + options.selectorAttr + ']');
@@ -110,7 +111,7 @@ function init(i18next, options={}){
             _loc(elem, opts);
         }
     };
-    return handle
+    return handle;
 }
 
 export default {
