@@ -1,7 +1,7 @@
 {
   "name": "loc-i18next",
-  "version": "0.1.3",
-  "description": "Smart selector for use with i18next",
+  "version": "0.1.4",
+  "description": "Smart selectors to be used with i18next",
   "main": "index.js",
   "directories": {
     "example": "example"
