@@ -14,10 +14,7 @@ $(".nav").localize();
 loc-i18next :
 
 ```js
-import i18next from 'i18next';
-import locI18next from "loc-i18next";
-
-const localize = locI18next.init(i18next);
+localize = locI18next.init(i18next);
 localize(".nav");
 ```
 ## Initialize the plugin
