@@ -14,14 +14,20 @@ $(".nav").localize();
 loc-i18next :
 
 ```js
-localize = locI18next.init(i18nextInstance);
+import i18next from 'i18next';
+import locI18next from "loc-i18next";
+
+const localize = locI18next.init(i18next);
 localize(".nav");
 ```
 ## Initialize the plugin
 
 *With options :*
 ```js
-localize = locI18next.init(i18nextInstance, {
+import i18next from 'i18next';
+import locI18next from "loc-i18next";
+
+const localize = locI18next.init(i18next, {
   selectorAttr: 'data-i18n', // selector for translating elements
   targetAttr: 'i18n-target',
   optionsAttr: 'i18n-options',
@@ -31,8 +37,12 @@ localize = locI18next.init(i18nextInstance, {
 ```
 *Using default values :*
 ```js
-localize = locI18next.init(i18nextInstance);
+import i18next from 'i18next';
+import locI18next from "loc-i18next";
+
+const localize = locI18next.init(i18next);
 ```
+
 ## Using options in translation function
 
 ```js
