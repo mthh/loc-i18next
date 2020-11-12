@@ -100,8 +100,18 @@ function init(i18next, options={}){
         }
     }
 
-    function handle(selector, opts){
-        var elems = options.document.querySelectorAll(selector);
+    function handle(selectorOrElements, opts){
+        var elems;
+        if(typeof selectorOrElements === 'string') {
+            // Assume query selector
+            elems = options.document.querySelectorAll(selectorOrElements);
+        } else if(Array.isArray(selectorOrElements)) {
+            // Assume array of elements
+            elems = selectorOrElements;
+        } else {
+            // Assume single element
+            elems = [selectorOrElements];
+        }
         for(let i = 0; i < elems.length; i++){
             let elem = elems[i];
             let childs = elem.querySelectorAll('[' + options.selectorAttr + ']');
