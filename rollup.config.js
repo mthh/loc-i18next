@@ -9,6 +9,7 @@ const compress = argv.uglify;
 const babelOptions = {
   exclude: 'node_modules/**',
   presets: [['@babel/preset-env', { modules: false }]],
+  plugins: ["@babel/plugin-proposal-optional-chaining"],
   babelrc: false
 };
 

@@ -1,15 +1,15 @@
 {
   "name": "loc-i18next",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Smart selectors to be used with i18next",
   "main": "index.js",
   "directories": {
     "example": "example"
   },
-  "dependencies": {},
   "devDependencies": {
     "@babel/cli": "^7.0.0",
     "@babel/core": "^7.0.0",
+    "@babel/plugin-proposal-optional-chaining": "^7.21.0",
     "@babel/preset-env": "^7.0.0",
     "babel-eslint": "^10.0.1",
     "eslint": "^4.12.1",
@@ -44,6 +44,9 @@
   "contributors": [
     {
       "name": "NOtherDev"
+    },
+    {
+      "name": "thjungers"
     }
   ],
   "license": "MIT",

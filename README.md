@@ -30,6 +30,7 @@ const localize = locI18next.init(i18next, {
   optionsAttr: 'i18n-options',
   useOptionsAttr: false,
   parseDefaultValueFromContent: true
+  document: window.document,
 });
 ```
 *Using default values :*

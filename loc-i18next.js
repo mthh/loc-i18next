@@ -145,7 +145,8 @@ function init(i18next) {
   }
 
   function handle(selector, opts) {
-    var elems = options.document.querySelectorAll(selector);
+    var document = (opts === null || opts === void 0 ? void 0 : opts.document) || options.document;
+    var elems = document.querySelectorAll(selector);
 
     for (var i = 0; i < elems.length; i++) {
       var elem = elems[i];
