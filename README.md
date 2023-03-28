@@ -121,6 +121,17 @@ localize("#btn1");
 localize("#btn1");
 ```
 
+### use a custom `document` object
+```js
+<template id="template">
+  <a id="btn1" href="#" data-i18n="myKey"></a>
+</template>
+const shadowRoot = document.body.attachShadow();
+const template = document.getElementById("template");
+shadowRoot.appendChild(template.content.cloneNode(true));
+localize("#btn1", {document: shadowRoot});
+```
+
 ## Motivation
 - Having an occasion to try some packages like rollup, babel or uglify.
 - Obtaining the same kind of functionnalities than with `jquery-i18next` in a project not using jquery.
