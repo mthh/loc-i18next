@@ -101,7 +101,8 @@ function init(i18next, options={}){
     }
 
     function handle(selector, opts){
-        var elems = options.document.querySelectorAll(selector);
+        const document = opts?.document || options.document;
+        var elems = document.querySelectorAll(selector);
         for(let i = 0; i < elems.length; i++){
             let elem = elems[i];
             let childs = elem.querySelectorAll('[' + options.selectorAttr + ']');
