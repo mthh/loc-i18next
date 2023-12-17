@@ -4,7 +4,8 @@ const defaults = {
     optionsAttr: 'i18n-options',
     useOptionsAttr: false,
     parseDefaultValueFromContent: true,
-    document: document,
+    // `document` if running inside a browser, but otherwise undefined (prevents reference error when ran outside browser)
+    document: typeof window !== 'undefined' ? document : undefined,
 };
 
 function init(i18next, options={}){
